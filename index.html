@@ -20,59 +20,44 @@
     
 </head>
 <body>
-
   <script>
-  let input = "";
-  let output = false;//false = done/cancel/null, true = give fate
-  let Done = false;
-  let fateIndex = 0;
-  const fates = [
-    'Your fortunes are grim. Bathe in holy water, do not enter cemeteries for a month, and refrain from starting fires. \n The answer is no.' ,//bad
-    'Your fortunes speak of misery and anguish. Beware water. Beware caves. Travel to a holy place and beg forgiveness. \n The answer is no.' ,
-    'Your fortunes are obscured. I cannot penetrate the clouds you have laid over your life. \n Try again.' ,//ask again
-    'Fate is not accepting visitors today. \n Try again.' ,
-    'Magic is not real! Read a book! \n Undecided.' ,//neither lucky nor unlucky
-    'Fortune has deserted you. You are neither lucky nor unlucky. Your profits and losses are yours to own. \n Undecided.' ,
-    'Fortune smiles upon you. Talk to your ex. \n The answer is yes.' ,//go for it
-    'Fortune favors you. Bless those around you, and your luck will be magnified. Your favorite artist will release a new album shortly. \n The answer is yes.'
-  ];
-  
+    let input = "";
+    let Done = false;
+    let fateIndex = 0;
+    const fates = [
+      'Your fortunes are grim. Bathe in holy water, do not enter cemeteries for a month, and refrain from starting fires. \n The answer is no.' ,//bad
+      'Your fortunes speak of misery and anguish. Beware water. Beware caves. Travel to a holy place and beg forgiveness. \n The answer is no.' ,
+      'Your fortunes are obscured. I cannot penetrate the clouds you have laid over your life. \n Try again.' ,//ask again
+      'Fate is not accepting visitors today. \n Try again.' ,
+      'Magic is not real! Read a book! \n Undecided.' ,//neither lucky nor unlucky
+      'Fortune has deserted you. You are neither lucky nor unlucky. Your profits and losses are yours to own. \n Undecided.' ,
+      'Fortune smiles upon you. Talk to your ex. \n The answer is yes.' ,//go for it
+      'Fortune favors you. Bless those around you, and your luck will be magnified. Your favorite artist will release a new album shortly. \n The answer is yes.'
+    ];
+    //gameplay loop
     do {
       input = prompt("Hello, traveler. Ask your question, and your fortune will be revealed by the magic ball.");
       if (input != null && input.trim().length!=0) //check for whitespace string, empty string, or cancelled prompt
       {
         if (input === "Done") 
         {
-          Done = true; output = false;
+          Done = true;
         }//Done playing
         else //Not done playing and my string has content, tell me my fortune!
         {
           fateIndex = getRandomInt(8);//assigns fateIndex to 0-7, the start and end of my array
-          output = true;//get fortune
-          Done = true;
+          alert(fates[fateIndex]);//Get fortune
         }
       } else // Bad input
         {
           Done = true; 
-          output = false;//No second chances for bad input. We aren't fated to speak in this lifetime. Let's meet again in another world 
-          //(user can refresh the page to play again)
         }
-
-
     } while (!Done)
-    //Display results
-    if (output) 
-    {
-      alert(fates[fateIndex]);
-    } else //done or bad input
-    {
-      alert('Until next time. May your foot never step on a grave, and may your head never pass beneath a ladder.');
-    }
+    //Goodbye
+    alert('Until next time. May your foot never step on a grave, and may your head never pass beneath a ladder.');
     //Functions
     function getRandomInt(max) {
       return Math.floor(Math.random() * max);
-    }
-    
+    }    
   </script>
-  
 </body>
